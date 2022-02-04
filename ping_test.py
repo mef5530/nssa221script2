@@ -29,7 +29,7 @@ def resolutionDNS():
     process = subprocess.Popen("ping google.com -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
     lastLine:string = output[0]
-    parsedline = lastLine.split("\n")
+    parsedline = lastLine.splitlines()
     print(parsedline[-1])
 
     print("\nResolving DNS, trying rit DNS @ 129.21.3.17 ")
