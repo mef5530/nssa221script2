@@ -28,12 +28,13 @@ def resolutionDNS():
     print("\nResolving DNS, trying google.com... ")
     process = subprocess.Popen("ping google.com -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
-    print(output)
+    parsedOutput = output.split("\n")
+    lastLine = parsedOutput[parsedOutput.length()-1]
+    print(lastLine)
 
     print("\nResolving DNS, trying rit DNS @ 129.21.3.17 ")
     process = subprocess.Popen("ping 129.21.3.17 -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
-    print(output)
 
 def displayGateway():
     pass
