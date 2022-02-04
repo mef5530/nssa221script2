@@ -43,7 +43,7 @@ def mainLoop():
             displayGateway()
         else:
             print("Invalid input, restarting...")
-    subprocess.call(["continue"])
+    input("*** Enter any key to continue ***")
 def main():
     mainLoop()
 
