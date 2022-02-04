@@ -30,7 +30,8 @@ def resolutionDNS():
     output = process.communicate()
     lastLine:string = output[0]
     parsedline = lastLine.splitlines()
-    if "1 received" in lastLine:
+    expected = "1 received"
+    if expected in lastLine:
         print("Test passed")
     else:
         print("Test failed")
