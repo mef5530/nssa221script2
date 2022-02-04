@@ -26,7 +26,7 @@ def remoteConnectivity():
 
 def resolutionDNS():
     print("\nResolving DNS, trying google.com... ")
-    subprocess.call("ping google.com -c 5", shell=True, stdout=subprocess.PIPE)
+    subprocess.Popen("ping google.com -c 5", shell=True, stdout=subprocess.PIPE)
     output = subprocess.stdout.read()
 
 def displayGateway():
