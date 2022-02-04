@@ -1,6 +1,6 @@
 ## @Author Max Friedland
 ## @Date 2/4/2022
-
+import string
 import subprocess
 
 def guiPrompt() -> int:
@@ -28,7 +28,7 @@ def resolutionDNS():
     print("\nResolving DNS, trying google.com... ")
     process = subprocess.Popen("ping google.com -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
-    lastLine = output[-1]
+    lastLine:string = output[0]
     print(lastLine)
 
     print("\nResolving DNS, trying rit DNS @ 129.21.3.17 ")
