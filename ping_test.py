@@ -43,7 +43,8 @@ def mainLoop():
             displayGateway()
         else:
             print("Invalid input, restarting...")
-    input("*** Enter any key to continue ***")
+        input("*** Enter any key to continue ***")
+
 def main():
     mainLoop()
 
