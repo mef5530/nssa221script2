@@ -31,7 +31,7 @@ def resolutionDNS():
     lastLine:string = output[0]
     parsedline = lastLine.splitlines()
     expected = "1 received"
-    if expected in lastLine:
+    if lastLine.find(expected) != -1:
         print("Test passed")
     else:
         print("Test failed")
