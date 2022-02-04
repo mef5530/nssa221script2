@@ -28,7 +28,7 @@ def resolutionDNS():
     print("\nResolving DNS, trying google.com... ")
     process = subprocess.Popen("ping google.com -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
-    lastLine:string = output[0]
+    lastLine:str = output[0]
     parsedline = lastLine.splitlines()
     expected = "1 received"
     if lastLine.find(expected) != -1:
