@@ -5,6 +5,7 @@ import os
 import subprocess
 
 def guiPrompt() -> int:
+    ##Helper function displays the menu and options and returns the users input
     os.system("clear")
     print("**********************************")
     print("*****  ping troubleshooter   *****")
@@ -20,6 +21,7 @@ def guiPrompt() -> int:
     return input()
 
 def gatewayConnectivity():
+    ##Function finds the gateway then attempts to ping it. It parses the output and prints if the test was successful or not.
     print("\nTesting gateway connectivity...")
     process = subprocess.Popen("ip route", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
@@ -38,6 +40,7 @@ def gatewayConnectivity():
         print("Test failed")
 
 def remoteConnectivity():
+    ##Function pings a google server @8.8.8.8. It parses the output and prints if the test was successful or not.
     print("\nTesting remote connection, trying 8.8.8.8")
     process = subprocess.Popen("ping 8.8.8.8 -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
@@ -49,6 +52,7 @@ def remoteConnectivity():
         print("Test failed")
 
 def resolutionDNS():
+    ##Function pings both google.com and rit dns servers. It parses the output and prints if the test was successful or not.
     print("\nResolving DNS, trying google.com... ")
     process = subprocess.Popen("ping google.com -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
@@ -70,6 +74,7 @@ def resolutionDNS():
         print("Test failed")
 
 def displayGateway():
+    ##Finction finds and prints the default gateway.
     print("\nFinding default gateway, through \"ip route\"")
     process = subprocess.Popen("ip route", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
@@ -80,6 +85,7 @@ def displayGateway():
     print("Your default gateway is: " + word[2])
 
 def mainLoop():
+    ##This function displays the initial prompt then runs a test requested by the user. Runs in a loop until the program is terminated by the user.
     while(True):
         selection: str = guiPrompt()
         os.system("clear")
