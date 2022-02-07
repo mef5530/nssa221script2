@@ -58,8 +58,10 @@ def displayGateway():
     process = subprocess.Popen("ip route", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
     data: str = output[0].decode()
-    line = data.splitlines()
-    print(line)
+    line: str = data.splitlines()
+    word: str = line.split(" ")
+
+    print(word[2])
 
 def mainLoop():
     while(True):
