@@ -5,7 +5,7 @@ import os
 import subprocess
 
 def guiPrompt() -> int:
-    os.popen("clear")
+    os.system("clear")
     print("**********************************")
     print("*****  ping troubleshooter   *****")
     print("**********************************")
