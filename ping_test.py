@@ -19,7 +19,22 @@ def guiPrompt() -> int:
     return input()
 
 def gatewayConnectivity():
-    pass
+    print("\nTesting gateway connectivity...")
+    process = subprocess.Popen("ip route", shell=True, stdout=subprocess.PIPE)
+    output = process.communicate()
+    data: str = output[0].decode()
+    line: str = data.splitlines()
+    word: str = line[0].split(" ")
+    print("Pinging default gateway @" + word[2])
+
+    process = subprocess.Popen("ping -c 1 " + word[2], shell=True, stdout=subprocess.PIPE)
+    output = process.communicate()
+    line: str = output[0].decode()
+    expected = "1 received"
+    if line.find(expected) != -1:
+        print("Test passed")
+    else:
+        print("Test failed")
 
 def remoteConnectivity():
     print("\nTesting remote connection, trying 8.8.8.8")
@@ -61,7 +76,7 @@ def displayGateway():
     line: str = data.splitlines()
     word: str = line[0].split(" ")
 
-    print(word[2])
+    print("Your default gateway is: " + word[2])
 
 def mainLoop():
     while(True):
