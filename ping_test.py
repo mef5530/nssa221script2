@@ -1,10 +1,11 @@
 ## @Author Max Friedland
 ## @Date 2/4/2022
 import string
+import os
 import subprocess
 
 def guiPrompt() -> int:
-    ##subprocess.call(["clear"])
+    os.popen("clear")
     print("**********************************")
     print("*****  ping troubleshooter   *****")
     print("**********************************")
