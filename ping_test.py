@@ -59,7 +59,7 @@ def displayGateway():
     output = process.communicate()
     data: str = output[0].decode()
     line: str = data.splitlines()
-    word: str = line.split(" ")
+    word: str = line[0].split(" ")
 
     print(word[2])
 
