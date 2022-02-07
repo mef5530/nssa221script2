@@ -15,7 +15,7 @@ def guiPrompt() -> int:
     print("    3 - Test for DNS resolution.")
     print("    4 - Display gateway IP Address.")
     print()
-    print("Please enter a number (1-4): ")
+    print("Please enter a number (1-4) or q/Q to quit: ")
     return input()
 
 def gatewayConnectivity():
@@ -80,7 +80,7 @@ def displayGateway():
 
 def mainLoop():
     while(True):
-        selection = guiPrompt()
+        selection: str = guiPrompt()
         if selection == "1":
             gatewayConnectivity()
         elif selection == "2":
@@ -89,6 +89,9 @@ def mainLoop():
             resolutionDNS()
         elif selection == "4":
             displayGateway()
+        elif (selection == "q") or (selection == "Q"):
+            print("Exiting...")
+            break
         else:
             print("Invalid input, restarting...")
         input("*** Enter any key to continue ***")
