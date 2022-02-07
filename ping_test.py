@@ -82,6 +82,7 @@ def displayGateway():
 def mainLoop():
     while(True):
         selection: str = guiPrompt()
+        os.system("clear")
         if selection == "1":
             gatewayConnectivity()
         elif selection == "2":
