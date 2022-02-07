@@ -22,7 +22,15 @@ def gatewayConnectivity():
     pass
 
 def remoteConnectivity():
-    pass
+    print("\nTesting remote connection, trying 8.8.8.8")
+    process = subprocess.Popen("ping 8.8.8.8 -c 1", shell=True, stdout=subprocess.PIPE)
+    output = process.communicate()
+    line: str = output[0].decode()
+    expected = "1 received"
+    if line.find(expected) != -1:
+        print("Test passed")
+    else:
+        print("Test failed")
 
 def resolutionDNS():
     print("\nResolving DNS, trying google.com... ")
@@ -30,7 +38,6 @@ def resolutionDNS():
     output = process.communicate()
     line:str = output[0].decode()
     expected = "1 received"
-    print(line)
     if line.find(expected) != -1:
         print("Test passed")
     else:
@@ -39,9 +46,20 @@ def resolutionDNS():
     print("\nResolving DNS, trying rit DNS @ 129.21.3.17 ")
     process = subprocess.Popen("ping 129.21.3.17 -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
+    line: str = output[0].decode()
+    expected = "1 received"
+    if line.find(expected) != -1:
+        print("Test passed")
+    else:
+        print("Test failed")
 
 def displayGateway():
-    pass
+    print("\nFinding default gateway, through \"ip route\"")
+    process = subprocess.Popen("ip route", shell=True, stdout=subprocess.PIPE)
+    output = process.communicate()
+    data: str = output[0].decode()
+    line = data.splitlines()
+    print(line)
 
 def mainLoop():
     while(True):
