@@ -4,7 +4,7 @@ import string
 import subprocess
 
 def guiPrompt() -> int:
-    subprocess.call(["clear"])
+    ##subprocess.call(["clear"])
     print("**********************************")
     print("*****  ping troubleshooter   *****")
     print("**********************************")
@@ -28,10 +28,10 @@ def resolutionDNS():
     print("\nResolving DNS, trying google.com... ")
     process = subprocess.Popen("ping google.com -c 1", shell=True, stdout=subprocess.PIPE)
     output = process.communicate()
-    lastLine:str = output[0] + " b"
-    parsedline = lastLine.splitlines()
+    line:str = output[0].decode()
     expected = "1 received"
-    if lastLine.find(expected) != -1:
+    print(line)
+    if line.find(expected) != -1:
         print("Test passed")
     else:
         print("Test failed")
